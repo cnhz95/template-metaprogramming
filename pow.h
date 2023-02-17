@@ -9,7 +9,8 @@ struct Base {
 template<int Exp>
 struct Pow : Base<int> {
     double operator()(double base) const {
-        return base * Pow<Exp - 1>{}(base);
+        Pow<Exp / 2> p;
+        return (Exp & 1) ? base * p(base) * p(base) : p(base) * p(base);
     }
 };
 
