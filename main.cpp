@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-    std::cout << Pow<4>{}(2) << '\n';
+    std::cout << Pow<-4>{}(2) << '\n';
 
     return 0;
 }

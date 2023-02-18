@@ -1,16 +1,20 @@
 #ifndef TEMPLATE_METAPROGRAMMING_POW_H
 #define TEMPLATE_METAPROGRAMMING_POW_H
 
-template<typename Exp>
-struct Base {
+#include <type_traits>
 
-};
-
-template<int Exp>
-struct Pow : Base<int> {
+template<int Exp, typename Enable = void>
+struct Pow {
     double operator()(double base) const {
         Pow<Exp / 2> p;
         return (Exp & 1) ? base * p(base) * p(base) : p(base) * p(base);
+    }
+};
+
+template <int Exp>
+struct Pow <Exp, typename std::enable_if<Exp < 0>::type> {
+    double operator()(double base) const {
+        return 1.0 / Pow<-Exp>{}(base);
     }
 };
 
