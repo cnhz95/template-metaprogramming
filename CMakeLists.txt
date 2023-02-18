@@ -3,4 +3,4 @@ project(template_metaprogramming)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(template_metaprogramming main.cpp pow.h)
+add_executable(template_metaprogramming main.cpp pow.h hanoi.h)
