@@ -20,14 +20,14 @@ struct Pow <Exp, typename std::enable_if<Exp < 0>::type> {
 
 template<>
 struct Pow<1> {
-    double operator()(double base) {
+    double operator()(double base) const {
         return base;
     }
 };
 
 template<>
 struct Pow<0> {
-    double operator()([[maybe_unused]] double base) {
+    double operator()([[maybe_unused]] double base) const {
         return 1.0;
     }
 };
