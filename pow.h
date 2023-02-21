@@ -12,7 +12,7 @@ struct Pow {
 };
 
 template <int Exp>
-struct Pow <Exp, typename std::enable_if<Exp < 0>::type> {
+struct Pow<Exp, typename std::enable_if<Exp < 0>::type> {
     double operator()(double base) const {
         return 1.0 / Pow<-Exp>{}(base);
     }
