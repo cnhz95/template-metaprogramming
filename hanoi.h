@@ -8,8 +8,12 @@ struct Hanoi {
     void operator()() const {
         constexpr int other = 6 - Start - End;
         Hanoi<N - 1, Start, other>{}();
-        std::cout << "Move disk " << N << " from " << Start << " to " << End << "\n";
+        std::cout << *this;
         Hanoi<N - 1, other, End>{}();
+    }
+    friend std::ostream& operator <<(std::ostream& os, const Hanoi& hanoi) {
+        os << "Move disk " << N << " from " << Start << " to " << End << "\n";
+        return os;
     }
 };
 
